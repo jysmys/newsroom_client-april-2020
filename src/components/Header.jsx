@@ -13,7 +13,12 @@ const Header = (props) => {
         <Grid.Column>
           <h1 id="header">Daily News Sense</h1>
         </Grid.Column>
-        <Grid.Column floated="right" verticalAlign="bottom" width={3}>
+        <Grid.Column
+          floated="right"
+          verticalAlign="bottom"
+          width={3}
+          id="login"
+        >
           {!props.authenticated ? (
             <Link name="Login" to={{ pathname: "/sign_in" }}>
               <Button basic color="black" id="login">
@@ -22,7 +27,7 @@ const Header = (props) => {
             </Link>
           ) : (
             <>
-              <p>welcome {props.uid}</p>
+              <p>Welcome {props.uid}</p>
               <Link name="Logout" to={{ pathname: "/logout" }}>
                 <Button basic color="black" id="logout">
                   Logout

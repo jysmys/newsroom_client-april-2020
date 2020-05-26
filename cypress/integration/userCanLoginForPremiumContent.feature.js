@@ -32,7 +32,6 @@ describe("successfully", () => {
     });
     cy.visit("/");
     cy.get("button#login").click();
-    // cy.visit("/sign_in");
     cy.get("#login-form").within(() => {
       cy.get("#email").type("user@mail.com");
       cy.get("#password").type("password");
@@ -40,17 +39,21 @@ describe("successfully", () => {
     });
   });
 
-  it("with valid credentials", () => {
-    cy.get(".header").should("contain", "Welcome user@mail.com");
-  });
-
   it("and is directed to main page", () => {
     cy.get("#article-1").should("contain", "title 1");
   });
 
+  it("with valid credentials", () => {
+    cy.get("div#login").within(() => {
+      cy.get("p").should("contain", "Welcome user@mail.com");
+    });
+  });
+
   it("can view premium article", () => {
     cy.visit("/article/3");
-    cy.get("#article-3-body").its("length").should("be.gt", 100);
+    cy.get("#article-3-body").then((text) => {
+      text.length >= 100;
+    });
   });
 });
 
