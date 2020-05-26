@@ -10,18 +10,31 @@ const App = () => {
   const [uid, setUid] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
 
-
   return (
     <>
-      <Header />
+      <Header
+        uid={uid}
+        authenticated={authenticated}
+        setAuthenticated={setAuthenticated}
+      />
       <Navbar />
       <Switch>
         <Route exact path="/" component={ArticleList}></Route>
         <Route exact path="/article/:id" component={SingleArticle}></Route>
         <Route exact path="/category/:category" component={ArticleList}></Route>
-        <Route exact path="/sign_in" component={LoginForm}></Route>
+        <Route
+          exact
+          path="/sign_in"
+          render={() => (
+            <LoginForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          )}
+        ></Route>
+        {/* <Route exact path="/logout" component={Logout}></Route> */}
       </Switch>
     </>
   );
-}
+};
 export default App;
