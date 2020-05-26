@@ -1,25 +1,21 @@
 import React from "react";
 import { Grid, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import DNSLogo from '../images/dnslogo.png'
 
 const Header = () => {
   return (
     <Grid columns={3} divided centered>
       <Grid.Row>
         <Grid.Column floated="left">
-          {/* <img src="..public/images/dnslogo.png" alt="DNSLogo" /> */}
+          <img src={DNSLogo} alt="DNSLogo" />
         </Grid.Column>
-      </Grid.Row>
-      <Grid.Row>
-        <Grid.Column verticalAlign="middle">
+        <Grid.Column >
           <h1 id="header">Daily News Sense</h1>
         </Grid.Column>
-      </Grid.Row>
-
-      <Grid.Row>
-        <Grid.Column floated="right" width={3}>
+        <Grid.Column floated="right" verticalAlign='bottom' width={3}>
           <Link name="Login" to={{ pathname: "/sign_in" }}>
-            <Button basic color="black" id="login" />
+            <Button basic color="black" id="login">Login</Button>
           </Link>
         </Grid.Column>
       </Grid.Row>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import ArticleList from "./components/ArticleList";
 import Header from "./components/Header";
@@ -6,7 +6,11 @@ import SingleArticle from "./components/SingleArticle";
 import Navbar from "./components/Navbar";
 import LoginForm from "./components/LoginForm";
 
-function App() {
+const App = () => {
+  const [uid, setUid] = useState("");
+  const [authenticated, setAuthenticated] = useState(false);
+
+
   return (
     <>
       <Header />

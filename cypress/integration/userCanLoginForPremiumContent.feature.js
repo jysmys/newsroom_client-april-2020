@@ -38,7 +38,7 @@ describe("successfully", () => {
     cy.get("#login-form").within(() => {
       cy.get("#email").type("user@mail.com");
       cy.get("#password").type("password");
-      cy.get("Button#Submit").contains("Submit").click();
+      cy.get("Button#submit").contains("Submit").click();
     });
   });
 
