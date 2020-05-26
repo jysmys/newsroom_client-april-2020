@@ -21,11 +21,14 @@ const Header = (props) => {
               </Button>
             </Link>
           ) : (
-            <Link name="Logout" to={{ pathname: "/logout" }}>
-              <Button basic color="black" id="logout">
-                Logout
-              </Button>
-            </Link>
+            <>
+              <p>welcome {props.uid}</p>
+              <Link name="Logout" to={{ pathname: "/logout" }}>
+                <Button basic color="black" id="logout">
+                  Logout
+                </Button>
+              </Link>
+            </>
           )}
         </Grid.Column>
       </Grid.Row>

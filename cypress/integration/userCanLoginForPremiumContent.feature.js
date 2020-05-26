@@ -31,8 +31,6 @@ describe("successfully", () => {
       },
     });
     cy.visit("/");
-  });
-  it("fill in login form", () => {
     cy.get("button#login").click();
     // cy.visit("/sign_in");
     cy.get("#login-form").within(() => {

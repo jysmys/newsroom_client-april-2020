@@ -26,10 +26,7 @@ const App = () => {
           exact
           path="/sign_in"
           render={() => (
-            <LoginForm
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            />
+            <LoginForm setUid={setUid} setAuthenticated={setAuthenticated} />
           )}
         ></Route>
         {/* <Route exact path="/logout" component={Logout}></Route> */}
