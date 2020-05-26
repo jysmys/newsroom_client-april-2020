@@ -6,7 +6,8 @@ const ArticleCard = ({ article }) => {
   return (
     <Grid.Row width={3} centered>
       <Placeholder
-        style={{ height: 250, width: 400 }}
+        fluid
+        style={{ height: 300, width: 600 }}
         key={article.id}
         id={"article-" + article.id}
       >

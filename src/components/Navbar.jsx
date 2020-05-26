@@ -25,13 +25,19 @@ const Navbar = () => {
   });
 
   return (
-    <div id="navbar">
-      <Menu color="lightgrey" centered>
+    <div >
+      <Menu 
+      id="navbar"
+      inverted widths='10' 
+      color="grey" 
+      class="teal item"
+      centered
+      >
         <Menu.Item>
           <NavLink to="/">
-            <Icon name="home" size="big" color="blue"></Icon>
+            <Icon name="home" size="big" color="teal"></Icon>
           </NavLink>
-        </Menu.Item>
+        </Menu.Item >
         {renderCategories}
       </Menu>
     </div>

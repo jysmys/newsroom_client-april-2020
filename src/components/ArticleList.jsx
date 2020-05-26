@@ -41,7 +41,7 @@ const ArticleList = (props) => {
 
   return (
     <div>
-      <Grid columns={3} divided centered>
+      <Grid fluid columns={3} divided centered>
         <Ad
           link={"https://www.mercedes-benz.com/en/"}
           id={"ad-1"}
