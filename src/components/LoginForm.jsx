@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Grid, Button, Form, Input } from "semantic-ui-react";
 import auth from "../modules/auth";
 import { useHistory } from "react-router-dom";
+import "../css/index.css";
+import { Link } from "react-router-dom";
 
 const LoginForm = (props) => {
   const [message, setMessage] = useState("");
@@ -19,13 +21,14 @@ const LoginForm = (props) => {
         history.push("/");
       }
     } catch (error) {
-      setMessage(error);
+      setMessage(error.response.data.errors[0]);
     }
   };
   return (
     <>
       <Grid className="login-container" verticalAlign="middle">
         <Grid.Column align="center">
+          <h3 id="error-message">{message}</h3>
           <Form id="login-form" onSubmit={login}>
             <h1>Log in</h1>
             <h4>Email</h4>
@@ -33,7 +36,12 @@ const LoginForm = (props) => {
             <h4>Password</h4>
             <Input name="password" type="password" id="password"></Input>
             <Button id="submit">Submit</Button>
-            <p id="error-message">{message}</p>
+            <p>
+              Don't have an account?<br></br>{" "}
+              <Link name="Signup" to={{ pathname: "/sign_up" }}>
+                Click here to sign up.
+              </Link>
+            </p>
           </Form>
         </Grid.Column>
       </Grid>

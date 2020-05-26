@@ -45,7 +45,7 @@ describe("successfully", () => {
 
   it("with valid credentials", () => {
     cy.get("div#login").within(() => {
-      cy.get("p").should("contain", "Welcome user@mail.com");
+      cy.get("p").should("contain", "user@mail.com");
     });
   });
 
@@ -57,44 +57,48 @@ describe("successfully", () => {
   });
 });
 
-// describe('unsuccessfully', () => {
-//   it("with invalid credentials", () => {
-//     cy.route({
-//       method: "POST",
-//       url: "http://localhost:3000/api/auth/*",
-//       response: "fixture:unsuccessful_login.json",
-//       headers: {
-//         uid:"user@mail.com"
-//       },
-//       status: 400
-//     })
-//     cy.get("#login-form").within(() => {
-//       cy.get("#email").type("user@mail.com");
-//       cy.get("#password").type("wrongpassword");
-//       cy.get('Button').contains('Submit').click()
-//     });
-//     cy.get("#error-message").should("contain", "Invalid login credentials. Please try again.");
-//   });
-//})
+describe('unsuccessfully', () => {
+  beforeEach(() => {
+    cy.visit('/sign_in');
+    cy.server();
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/auth/*",
+      response: "fixture:unsuccessful_login.json",
+      headers: {
+        uid:"user@mail.com"
+      },
+      status: 400
+    })
+    cy.get("#login-form").within(() => {
+      cy.get("#email").type("user@mail.com");
+      cy.get("#password").type("wrongpassword");
+      cy.get('Button').contains('Submit').click()
+    });
+  })
+    it("with invalid credentials", () => {
+    cy.get("#error-message").should("contain", "Invalid login credentials. Please try again.");
+  });
+})
 
-// describe('and can end his/her session', () => {
-//   beforeEach(() => {
-//     cy.route({
-//       method: "POST",
-//       url: "http://localhost:3000/api/auth/*",
-//       response: "fixture:successful_login.json",
-//       headers: {
-//         uid:"user@mail.com"
-//       }
-//     })
-//     cy.route({
-//       method: "GET",
-//       url: "http://localhost:3000/api/auth/*",
-//       response: "fixture:successful_login.json",
-//       headers: {
-//         uid:"user@mail.com"
-//       }
-//     })
+describe('and can end his/her session', () => {
+  beforeEach(() => {
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/auth/*",
+      response: "fixture:successful_login.json",
+      headers: {
+        uid:"user@mail.com"
+      }
+    })
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/auth/*",
+      response: "fixture:successful_login.json",
+      headers: {
+        uid:"user@mail.com"
+      }
+    })
 //     cy.route({
 //       method: "DELETE",
 //       url: "http://localhost:3000/api/auth/*",
@@ -119,5 +123,5 @@ describe("successfully", () => {
 //     cy.get('#logout').contains('Log out user@mail.com').click()
 //     cy.get('#login-form').should('be.visible')
 //   })
-// })
-//});
+  })
+});

@@ -3,6 +3,19 @@ import { Grid, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import DNSLogo from "../images/dnslogo.png";
 
+const date = new Date();
+const currentTime = date.getHours();
+
+let time;
+
+if (currentTime < 12) {
+  time = "Morning";
+} else if (currentTime < 18) {
+  time = "Afternoon";
+} else {
+  time = "Evening";
+}
+
 const Header = (props) => {
   return (
     <Grid columns={3} divided centered>
@@ -27,7 +40,7 @@ const Header = (props) => {
             </Link>
           ) : (
             <>
-              <p>Welcome {props.uid}</p>
+              <p>Good {time} {props.uid}</p>
               <Link name="Logout" to={{ pathname: "/logout" }}>
                 <Button basic color="black" id="logout">
                   Logout
