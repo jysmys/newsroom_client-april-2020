@@ -18,9 +18,9 @@ const Header = () => {
 
       <Grid.Row>
         <Grid.Column floated="right" width={3}>
-          <Button basic color="black" id="login">
-            <Link name="Login" to={{ pathname: "/sign_in" }}></Link>
-          </Button>
+          <Link name="Login" to={{ pathname: "/sign_in" }}>
+            <Button basic color="black" id="login" />
+          </Link>
         </Grid.Column>
       </Grid.Row>
     </Grid>
