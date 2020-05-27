@@ -35,7 +35,7 @@ const Navbar = () => {
       stackable
      
       >
-        <Menu.Item centered>
+        <Menu.Item >
           <NavLink to="/">
           <span id="logo">DNS</span>
           </NavLink>

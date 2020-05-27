@@ -33,6 +33,7 @@ const Header = (props) => {
             <h1 id="header" style={{ textAlign:'center'}}>
             <span>D</span>aily <span>N</span>ews <span>S</span>ense
           </h1>
+          <div id='login'>
           {!props.authenticated ? (
             <Link name="Login" to={{ pathname: "/sign_in" }}>
               <Button 
@@ -44,11 +45,12 @@ const Header = (props) => {
             </Link>
           ) : (
             <>
-              <p>
-                Good {time} {props.uid}
+              <p style={{textAlign: 'right'}}>
+                Good {time} <br></br>{props.uid}
               </p>
               <Link name="Logout" to={{ pathname: "/sign_in" }}>
                 <Button
+                  floated='right' 
                   basic inverted
                   id="logout"
                   onClick={() => logout()}
@@ -58,6 +60,7 @@ const Header = (props) => {
               </Link>
             </>
           )}
+          </div>
        </Grid.Column>
       </Grid.Row>
     </Grid>
