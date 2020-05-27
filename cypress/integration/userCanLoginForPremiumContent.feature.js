@@ -53,7 +53,6 @@ describe("successfully", () => {
     cy.visit("/article/3");
     cy.get("#article-3-body").then((text) => {
       text.length >= 100;
-      // expect(text).to.be.greaterThan(100);
     });
   });
 });
@@ -131,7 +130,6 @@ describe("unsuccessfully", () => {
 
     it("and is redirected to login page", () => {
       cy.get("#logout").contains("Logout").click();
-      // cy.get("#login-form").should("be.visible");
       expect("#article-1").to.exist;
     });
   });

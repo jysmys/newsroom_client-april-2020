@@ -29,7 +29,6 @@ const App = () => {
             <LoginForm setUid={setUid} setAuthenticated={setAuthenticated} />
           )}
         ></Route>
-        {/* <Route exact path="/logout" component={Logout}></Route> */}
       </Switch>
     </>
   );
