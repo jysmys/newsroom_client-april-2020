@@ -29,13 +29,13 @@ const LoginForm = (props) => {
       <Grid className="login-container" verticalAlign="middle">
         <Grid.Column align="center">
           <h3 id="error-message">{message}</h3>
-          <Form id="login-form" onSubmit={login}>
+          <Form unstackable id="login-form" onSubmit={login}>
             <h1>Log in</h1>
             <h4>Email</h4>
             <Input name="email" type="email" id="email"></Input>
             <h4>Password</h4>
-            <Input name="password" type="password" id="password"></Input>
-            <Button id="submit">Submit</Button>
+            <Input name="password" type="password" id="password"></Input><br></br>
+            <Button id="submit">Submit</Button><br></br>
             <p>
               Don't have an account?<br></br>{" "}
               <Link name="Signup" to={{ pathname: "/sign_up" }}>
