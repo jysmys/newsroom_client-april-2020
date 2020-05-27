@@ -58,7 +58,7 @@ describe("successfully", () => {
 });
 
 describe('unsuccessfully', () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit('/sign_in');
     cy.server();
     cy.route({
@@ -79,10 +79,12 @@ describe('unsuccessfully', () => {
     it("with invalid credentials", () => {
     cy.get("#error-message").should("contain", "Invalid login credentials. Please try again.");
   });
-})
+
 
 describe('and can end his/her session', () => {
   beforeEach(() => {
+    cy.visit('/sign_in');
+    cy.server();
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/auth/*",
@@ -99,29 +101,29 @@ describe('and can end his/her session', () => {
         uid:"user@mail.com"
       }
     })
-//     cy.route({
-//       method: "DELETE",
-//       url: "http://localhost:3000/api/auth/*",
-//       response: "fixture:logout.json",
-//       headers: {
-//         uid: "user@mail.com"
-//       }
-//     })
-//     cy.get('#login-form').within(() => {
-//       cy.get('#email').type('user@mail.com');
-//       cy.get('#password').type('password');
-//       cy.get('Button').contains('Submit').click();
-//     });
-//   })
-
-//   it('clicking the Log out button', () => {
-//     cy.get('#logout').contains('Log out user@mail.com').click()
-//     cy.get('#logout').should('not.exist')
-//   })
-
-//   it('and is redirected to login page', () => {
-//     cy.get('#logout').contains('Log out user@mail.com').click()
-//     cy.get('#login-form').should('be.visible')
-//   })
+    cy.route({
+      method: "DELETE",
+      url: "http://localhost:3000/api/auth/*",
+      response: "fixture:logout.json",
+      headers: {
+        uid: "user@mail.com"
+      }
+    })
+    cy.get('#login-form').within(() => {
+      cy.get('#email').type('user@mail.com');
+      cy.get('#password').type('password');
+      cy.get('Button').contains('Submit').click();
+    });
   })
-});
+
+  it('clicking the Log out button', () => {
+    cy.get('#logout').contains('Logout').click()
+    cy.get('#logout').should('not.exist')
+  })
+
+  it('and is redirected to login page', () => {
+    cy.get('#logout').contains('Logout').click()
+    cy.get('#login-form').should('be.visible')
+  })
+  })
+})

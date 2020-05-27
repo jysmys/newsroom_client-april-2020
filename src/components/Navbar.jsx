@@ -30,7 +30,7 @@ const Navbar = () => {
       id="navbar"
       inverted widths='10' 
       color="grey" 
-      class="teal item"
+      stackable
       centered
       >
         <Menu.Item>
