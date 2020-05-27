@@ -27,25 +27,18 @@ const Header = (props) => {
   };
 
   return (
-    <Grid columns={3} divided centered>
-      <Grid.Row>
-        <Grid.Column verticalAlign="bottom">
-          <span id="logo">DNS</span>
-        </Grid.Column>
-        <Grid.Column textAlign="center">
-          <h1 id="header">
+    <Grid >
+      <Grid.Row >
+        <Grid.Column >
+            <h1 id="header" style={{ textAlign:'center'}}>
             <span>D</span>aily <span>N</span>ews <span>S</span>ense
           </h1>
-        </Grid.Column>
-        <Grid.Column
-          floated="right"
-          verticalAlign="bottom"
-          width={3}
-          id="login"
-        >
           {!props.authenticated ? (
             <Link name="Login" to={{ pathname: "/sign_in" }}>
-              <Button basic inverted id="login">
+              <Button 
+              floated='right' 
+              basic inverted 
+              id="login">
                 Login
               </Button>
             </Link>
@@ -65,7 +58,7 @@ const Header = (props) => {
               </Link>
             </>
           )}
-        </Grid.Column>
+       </Grid.Column>
       </Grid.Row>
     </Grid>
   );

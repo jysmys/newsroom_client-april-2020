@@ -127,3 +127,38 @@ describe('and can end his/her session', () => {
   })
   })
 })
+
+describe('User can sign up for an account to see premium content', () => {
+  before(() => {
+    cy.server();
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/auth/*",
+      response: "fixture:successful_login.json",
+      headers: {
+        uid: "user@mail.com",
+      },
+    });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/auth/*",
+      response: "fixture:successful_login.json",
+      headers: {
+        uid: "user@mail.com",
+      },
+    });
+    cy.visit('/sign_in');
+    cy.get('#login-form').contains('Click here').click();
+  })
+  it('completes sign up form succesfully', () => {
+    cy.get('#signup-form').within(() => {
+      cy.get('#email').type('user@mail.com');
+      cy.get('#password').type('password');
+      cy.get('#password-confirmation').type('password');
+      cy.get('Button').contains('Submit').click();
+      cy.get('')
+    });
+  });
+  
+
+})

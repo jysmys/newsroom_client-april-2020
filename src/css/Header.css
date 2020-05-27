@@ -33,9 +33,8 @@ p {
   font-family: "EB Garamond", serif;
   color: white;
 }
-.ui.centered.divided.three.column.grid {
+div.row {
   background-color: #409d9b;
-  padding: 20px;
 }
 a {
   color: white;
@@ -45,10 +44,15 @@ a {
 #login {
   font-family: "Quattrocento", serif;
   font-weight: bold;
+  margin-right: 30px;
 }
 
 #navbar {
   font-family: "Quattrocento", serif;
   font-size: 20px;
+}
+
+#header {
+  margin-top: 30px;
 }
 
