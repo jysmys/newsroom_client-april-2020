@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Button } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import auth from "../modules/auth.js";
 
 const date = new Date();
@@ -17,10 +17,12 @@ if (currentTime < 12) {
 }
 
 const Header = (props) => {
+  const history = useHistory();
   const logout = async () => {
     try {
       await auth.signOut();
       props.setAuthenticated(false);
+      history.push("/");
     } catch (error) {
       console.log(error);
     }

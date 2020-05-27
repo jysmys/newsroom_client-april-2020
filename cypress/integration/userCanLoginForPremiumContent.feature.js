@@ -53,6 +53,7 @@ describe("successfully", () => {
     cy.visit("/article/3");
     cy.get("#article-3-body").then((text) => {
       text.length >= 100;
+      // expect(text).to.be.greaterThan(100);
     });
   });
 });
@@ -111,6 +112,11 @@ describe("unsuccessfully", () => {
           uid: "user@mail.com",
         },
       });
+      cy.route({
+        method: "GET",
+        url: "http://localhost:3000/api/articles",
+        response: "fixture:article_list.json",
+      });
       cy.get("#login-form").within(() => {
         cy.get("#email").type("user@mail.com");
         cy.get("#password").type("password");
@@ -125,7 +131,8 @@ describe("unsuccessfully", () => {
 
     it("and is redirected to login page", () => {
       cy.get("#logout").contains("Logout").click();
-      cy.get("#login-form").should("be.visible");
+      // cy.get("#login-form").should("be.visible");
+      expect("#article-1").to.exist;
     });
   });
 });
