@@ -27,41 +27,40 @@ const Header = (props) => {
   };
 
   return (
-    <Grid >
-      <Grid.Row >
-        <Grid.Column >
-            <h1 id="header" style={{ textAlign:'center'}}>
+    <Grid>
+      <Grid.Row>
+        <Grid.Column>
+          <h1 id="header" style={{ textAlign: "center" }}>
             <span>D</span>aily <span>N</span>ews <span>S</span>ense
           </h1>
-          <div id='login'>
-          {!props.authenticated ? (
-            <Link name="Login" to={{ pathname: "/sign_in" }}>
-              <Button 
-              floated='right' 
-              basic inverted 
-              id="login">
-                Login
-              </Button>
-            </Link>
-          ) : (
-            <>
-              <p style={{textAlign: 'right'}}>
-                Good {time} <br></br>{props.uid}
-              </p>
-              <Link name="Logout" to={{ pathname: "/sign_in" }}>
-                <Button
-                  floated='right' 
-                  basic inverted
-                  id="logout"
-                  onClick={() => logout()}
-                >
-                  Logout
+          <div id="login">
+            {!props.authenticated ? (
+              <Link name="Login" to={{ pathname: "/sign_in" }}>
+                <Button floated="right" basic inverted id="login">
+                  Login
                 </Button>
               </Link>
-            </>
-          )}
+            ) : (
+              <>
+                <p style={{ textAlign: "right" }}>
+                  Good {time} <br></br>
+                  {props.uid}
+                </p>
+                <Link name="Logout" to={{ pathname: "/sign_in" }}>
+                  <Button
+                    floated="right"
+                    basic
+                    inverted
+                    id="logout"
+                    onClick={() => logout()}
+                  >
+                    Logout
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
-       </Grid.Column>
+        </Grid.Column>
       </Grid.Row>
     </Grid>
   );

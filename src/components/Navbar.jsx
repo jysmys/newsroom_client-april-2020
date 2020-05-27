@@ -16,7 +16,7 @@ const Navbar = () => {
 
   let renderCategories = categories.map((cat) => {
     return (
-      <Menu.Item boderless >
+      <Menu.Item boderless>
         <NavLink to={`/category/${cat.toLowerCase()}`} id={cat.toLowerCase()}>
           {cat}
         </NavLink>
@@ -25,21 +25,21 @@ const Navbar = () => {
   });
 
   return (
-    <div >
-      <Menu 
-      id="navbar"
-      inverted secondary 
-      widths='10' 
-      color="grey"
-      boderless 
-      stackable
-     
+    <div>
+      <Menu
+        id="navbar"
+        inverted
+        secondary
+        widths="10"
+        color="grey"
+        boderless
+        stackable
       >
-        <Menu.Item >
+        <Menu.Item>
           <NavLink to="/">
-          <span id="logo">DNS</span>
+            <span id="logo">DNS</span>
           </NavLink>
-        </Menu.Item >
+        </Menu.Item>
         {renderCategories}
       </Menu>
     </div>

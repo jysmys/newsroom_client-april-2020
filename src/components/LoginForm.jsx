@@ -34,8 +34,10 @@ const LoginForm = (props) => {
             <h4>Email</h4>
             <Input name="email" type="email" id="email"></Input>
             <h4>Password</h4>
-            <Input name="password" type="password" id="password"></Input><br></br>
-            <Button id="submit">Submit</Button><br></br>
+            <Input name="password" type="password" id="password"></Input>
+            <br></br>
+            <Button id="submit">Submit</Button>
+            <br></br>
             <p>
               Don't have an account?<br></br>{" "}
               <Link name="Signup" to={{ pathname: "/sign_up" }}>
