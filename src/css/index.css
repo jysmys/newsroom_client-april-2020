@@ -11,7 +11,8 @@ h6 {
   color: white;
 }
 
-p {
+p,
+#error-message {
   font-family: "EB Garamond", serif;
   color: black;
 }

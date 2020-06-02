@@ -7,8 +7,7 @@ import Navbar from "./components/Navbar";
 import CreateSubscription from "./components/CreateSubscription";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
-
-
+import { connect } from "react-redux";
 
 const App = () => {
   const [uid, setUid] = useState("");
@@ -20,7 +19,8 @@ const App = () => {
         uid={uid}
         authenticated={authenticated}
         setAuthenticated={setAuthenticated}
-      ><Suspense fallback={<div>Loading</div>}/>
+      >
+        <Suspense fallback={<div>Loading</div>} />
       </Header>
       <Navbar />
       <Switch>
@@ -31,9 +31,10 @@ const App = () => {
           render={() => <SingleArticle authenticated={authenticated} />}
         ></Route>
         <Route exact path="/category/:category" component={ArticleList}></Route>
-        <Route exact path="/subscription" render={() => (
-            <CreateSubscription authenticated={authenticated}/>
-          )}
+        <Route
+          exact
+          path="/subscription"
+          render={() => <CreateSubscription authenticated={authenticated} />}
         ></Route>
         <Route
           exact
@@ -55,4 +56,4 @@ const App = () => {
     </>
   );
 };
-export default App;
+export default connect()(App);
