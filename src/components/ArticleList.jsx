@@ -5,24 +5,17 @@ import ArticleCard from "../components/ArticleCard";
 import Ad from "./Ad";
 import mercedesImg from "../images/mercedesAd.jpg";
 import lagavulinImg from "../images/lagavulinAd.jpg";
-import '../css/article.css'
-
-
+import "../css/article.css";
+import { fetchArticles } from "../state/action/articleActions";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
 const ArticleList = (props) => {
-  const [articleList, setArticleList] = useState([]);
   const category = props.match.params.category || "";
+  const articleList = props.articleList;
 
   useEffect(() => {
-    const fetchArticleList = async () => {
-      try {
-        const response = await axios.get("/articles");
-        setArticleList(response.data.articles);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchArticleList();
+    props.fetchArticles();
   }, []);
 
   let filteredArticles = () => {
@@ -63,4 +56,19 @@ const ArticleList = (props) => {
   );
 };
 
-export default ArticleList;
+// bind the dispatch to the function
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchArticles: bindActionCreators(fetchArticles, dispatch),
+  };
+};
+
+// only reading the state
+// mapping the redux state to the properties
+const mapStateToProps = (state) => {
+  return {
+    articleList: state.articles,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);

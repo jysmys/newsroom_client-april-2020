@@ -7,9 +7,15 @@ const rootReducers = (state = initialState, action) => {
         ...state,
         signupMessage: action.payload.signupMessage,
       };
+    case "GET_ARTICLE_LIST":
+      return {
+        ...state,
+        articles: action.payload.articles,
+      };
     default:
       return state;
   }
 };
 
 export default rootReducers;
+  
